@@ -1,7 +1,24 @@
-t_rex = "🦖"
-cactus = "🌵"
-road = " \u0332"
-space = " "
-print(f"{10 * road}{t_rex}{10 * road}{cactus}{40 * road}\n")
-print(f"{20 * space}{t_rex}{20 * space}\n")
-print(f"{20 * road}{cactus}{20 * road}\n")
+import os
+import time
+
+T_REX = "🦖"
+CACTUS = "🌵"
+ROAD = " \u0332"
+SPACE = " "
+STRIP_LENGTH = 81
+
+def cls():
+    os.system('clear')
+
+cls()
+cactus_position = STRIP_LENGTH
+
+while True:
+    if cactus_position < 0:
+        cactus_position = STRIP_LENGTH 
+
+    print(f"{STRIP_LENGTH * SPACE}")
+    print(f"{cactus_position * ROAD}{CACTUS}")
+    cactus_position -= 1
+    time.sleep(0.1)
+    cls()
