@@ -23,7 +23,7 @@ def on_press(key):
     except AttributeError:
         pass
 
-def animation_thread(queue):
+def animation_thread(queue: Queue):
     jump = False
     cactus_position = STRIP_LENGTH
     dinosaur_position = 0
@@ -68,12 +68,11 @@ if __name__ == "__main__":
     queue = Queue()
 
     # Start animation thread
-    animation_thread = threading.Thread(target=animation_thread, args=(queue,))
-    animation_thread.daemon = True
-    animation_thread.start()
+    animation_thread = threading.Thread(group = None, target = animation_thread, args = (queue, ), daemon = True) # type: ignore
+    animation_thread.start() # type: ignore
 
     # Create the input listener thread
-    input_thread = keyboard.Listener(on_press=on_press)
+    input_thread = keyboard.Listener(on_press=on_press) # type: ignore
 
     # Start the input thread
     input_thread.start()
